@@ -1,0 +1,47 @@
+<h1><%= title %></h1>
+
+<form method="post">
+	<div class="form-group">
+		<label for="first_name">First Name: </label>
+		<input
+			type="text"
+			id="first_name"
+			class="form-control"
+			name="first_name"
+			required
+			value="<%= author.first_name %>"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="family_name">Family Name: </label>
+		<input
+			type="text"
+			id="family_name"
+			class="form-control"
+			name="family_name"
+			required
+			value="<%= author.family_name %>"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="date_of_birth">Date of Birth</label>
+		<input
+			type="date"
+			name="date_of_birth"
+			id="date_of_birth"
+			class="form-control"
+			value="<%= author.birth_formatted %>"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="date_of_death">Date of Death</label>
+		<input
+			type="date"
+			name="date_of_death"
+			id="date_of_death"
+			class="form-control"
+			value="<%= author.death_formatted %>"
+		/>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>

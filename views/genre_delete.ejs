@@ -1,0 +1,29 @@
+<h1><%= title %>: <%= genre.name %></h1>
+
+<% if (genre_books.length) { %>
+<p>
+	<strong>Delete the following books before deleting the genre</strong>
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4>Books</h4>
+        <dl>
+            <% genre_books.forEach(function (elem) { %>
+                <dt>
+                    <a href="<%= elem.url %>"> <%= elem.title %></a>
+                </dt>
+                <dd>
+                    <%= elem.summary %></dd>
+                </dd>
+           <% }) %>
+        </dl>
+    </div>
+</p>
+<% } else { %>
+    <p>Do you really want to delete this genre?</p>
+
+    <form method="post">
+        <div class="form-group">
+            <input type="hidden" id="id" class="form-control" name="id" value="<%= genre._id %>">
+        </div>
+        <button class="btn btn-primary" type="submit">Delete Genre</button>
+    </form>
+<% } %>

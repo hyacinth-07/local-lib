@@ -1,0 +1,11 @@
+<h1><%= title %></h1>
+
+<% if (author_list.length) { %>
+<ul>
+	<% author_list.forEach(function (elem) { %>
+	<li>
+		<a href="<%= elem.url %>"> <%= elem.name %> </a> <%= elem.dates_formatted %>
+	</li>
+	<% }) %>
+</ul>
+<% } %>

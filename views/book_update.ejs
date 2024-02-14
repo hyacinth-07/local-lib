@@ -1,0 +1,79 @@
+<h1><%= title %></h1>
+
+<form method="POST">
+	<div class="form-group">
+		<label for="title">Title: </label>
+		<input
+			type="text"
+			id="title"
+			class="form-control"
+			placeholder="Title of book"
+			name="title"
+			required
+			value="<%= book.title %>"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="author">Author: </label>
+		<select name="author" id="author" class="form-control" required>
+			<option value="<%= book.author._id %>"><%= book.author.name %></option>
+			<% authors.forEach(function (elem) { %>
+			<option value="<%= elem._id %>"><%= elem.name %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="summary">Summary: </label>
+		<textarea
+			name="summary"
+			id="summary"
+			cols="30"
+			rows="5"
+			class="form-control"
+			placeholder="summary"
+			required
+		>
+<%= book.summary %></textarea
+		>
+	</div>
+	<div class="form-group">
+		<label for="isbn">ISBN: </label>
+		<input
+			type="text"
+			id="isbn"
+			class="form-control"
+			placeholder="ISBN13"
+			name="isbn"
+			required
+			value="<%= book.isbn %>"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="genre">Genre: </label>
+		<div>
+			<% genres.forEach(function (elem) { %>
+			<div style="display: inline; padding-right: 10px">
+				<% if (elem.checked) { %>
+				<input
+					type="checkbox"
+					name="genre"
+					id="<%= elem._id %>"
+					class="checkbox-input"
+					value="<%= elem._id %>"
+					checked
+				/>
+				<%= elem.name %> <% } else { %>
+				<input
+					type="checkbox"
+					name="genre"
+					id="<%= elem._id %>"
+					class="checkbox-input"
+					value="<%= elem._id %>"
+				/>
+				<%= elem.name %> <% } %>
+			</div>
+			<% }) %>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>

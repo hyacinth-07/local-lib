@@ -1,0 +1,32 @@
+<h1><%= title %>: <%= book.name %></h1>
+
+<% if (book_instances.length) { %>
+<p>
+	<strong>Delete the following copies before deleting the book</strong>
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4>Copies</h4>
+        <dl>
+            <% book_instances.forEach(function (elem) { %>
+                <dt>
+                    <a href="<%= elem.url %>"> <%= elem._id %></a>
+                </dt>
+                <dd>
+                    <%= elem.imprint %></dd>
+                </dd>
+                <dd>
+                    <%= elem.status %></dd>
+                </dd>
+           <% }) %>
+        </dl>
+    </div>
+</p>
+<% } else { %>
+    <p>Do you really want to delete this book?</p>
+
+    <form method="post">
+        <div class="form-group">
+            <input type="hidden" id="id" class="form-control" name="id" value="<%= book._id %>">
+        </div>
+        <button class="btn btn-primary" type="submit">Delete book</button>
+    </form>
+<% } %>

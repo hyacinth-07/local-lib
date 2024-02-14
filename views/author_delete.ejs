@@ -1,0 +1,29 @@
+<h1><%= title %>: <%= author.name %></h1>
+
+<% if (author_books.length) { %>
+<p>
+	<strong>Delete the following books before deleting the author</strong>
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4>Books</h4>
+        <dl>
+            <% author_books.forEach(function (elem) { %>
+                <dt>
+                    <a href="<%= elem.url %>"> <%= elem.title %></a>
+                </dt>
+                <dd>
+                    <%= elem.summary %></dd>
+                </dd>
+           <% }) %>
+        </dl>
+    </div>
+</p>
+<% } else { %>
+    <p>Do you really want to delete this author?</p>
+
+    <form method="post">
+        <div class="form-group">
+            <input type="hidden" id="authorId" class="form-control" name="authorId" value="<%= author._id %>">
+        </div>
+        <button class="btn btn-primary" type="submit">Delete Author</button>
+    </form>
+<% } %>

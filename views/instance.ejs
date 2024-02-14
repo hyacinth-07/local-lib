@@ -1,0 +1,19 @@
+<h1><%= title %></h1>
+
+<% if (bookInstance_list.length) { %>
+<ul>
+	<% bookInstance_list.forEach(function (elem) { %>
+	<li>
+		<a href="<%= elem.url %>"><%= elem.book.title %> </a> (<%= elem.imprint %>)
+		<% if (elem.status === "Available") { %>
+		<span class="text-success"> <%= elem.status %> </span> <% } else if
+		(elem.status === "Maintenance") { %>
+		<span class="text-danger"><%= elem.status %></span> <% } else { %>
+		<span class="text-warning"> <%= elem.status %> </span> <% } if (elem.status
+		!== "Available") { %> <span><%= elem.due_back_formatted %></span> <% } %>
+	</li>
+	<% }) %>
+</ul>
+<% } else { %>
+<p>There are no book copies in this library</p>
+<% } %>

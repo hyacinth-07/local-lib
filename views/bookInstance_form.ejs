@@ -1,0 +1,38 @@
+<h1><%= title %></h1>
+
+<form method="post">
+	<div class="form-group">
+		<label for="book">Book: </label>
+		<select name="book" id="book" class="form-control" required>
+			<option value="">-- Select a Book --</option>
+			<% book_list.forEach(function (elem) { %>
+			<option value="<%= elem._id %>"><%= elem.title %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="imprint">Imprint: </label>
+		<input
+			type="text"
+			id="imprint"
+			class="form-control"
+			placeholder="Publisher info"
+			name="imprint"
+		/>
+	</div>
+	<div class="form group">
+		<label for="due_back">Date when available: </label>
+		<input type="date" id="due_back" class="form-control" name="due_back" />
+	</div>
+	<div class="form-group">
+		<label for="status"></label>
+		<select name="status" id="status" class="form-control" required>
+			<option value="">-- Select an Status --</option>
+			<option value="Maintenance">Maintenance</option>
+			<option value="Available">Available</option>
+			<option value="Loaned">Loaned</option>
+			<option value="Reserved">Reserved</option>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
